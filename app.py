@@ -8,9 +8,9 @@ import threading
 
 app = Flask(__name__)
 
-#camera device numbers
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
+#camera device numbers
 front_left = 0
 front_right = 4
 claw_cam = 17
