@@ -51,7 +51,7 @@ claw_cam = 17
 back = 8
 ```
 
-##Implementation
+## Implementation
 
 The Flask app does run independently, but was built to be implementened with a motor controlling Flask app. See https://github.com/vcoppo23/Robocup for an implementation.
 
