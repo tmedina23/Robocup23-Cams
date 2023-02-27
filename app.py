@@ -1,0 +1,58 @@
+from flask import Flask, render_template, Response
+import cv2
+import threading
+
+app = Flask(__name__)
+
+front_left = 0
+front_right = 4
+claw_cam = 17
+back = 8
+
+def get_frame(cam_num, claw):
+    camera = cv2.VideoCapture(cam_num)
+
+    w=320
+    h=240
+    camera.set(3,w)
+    camera.set(4,h)
+    camera.set(cv2.CAP_PROP_FPS, 10)
+
+
+    while True:
+        ret, frame = camera.read()
+        if not ret:
+            break
+        if not claw:
+            alpha = 30
+            beta = 1
+            newFrame = cv2.convertScaleAbs(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY), alpha, beta)
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + cv2.imencode('.jpg', newFrame)[1].tobytes() + b'\r\n\r\n')
+        else:
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + cv2.imencode('.jpg', frame)[1].tobytes() + b'\r\n\r\n')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/video_feed0')
+def video_feed0():
+    return Response(get_frame(claw_cam, True), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/video_feed1')
+def video_feed1():
+    return Response(get_frame(front_left, False), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/video_feed2')
+def video_feed2():
+    return Response(get_frame(front_right, False), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/video_feed3')
+def video_feed3():
+    return Response(get_frame(back, False), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80)
