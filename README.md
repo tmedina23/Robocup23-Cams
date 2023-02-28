@@ -18,6 +18,7 @@ git clone https://github.com/tmedina23/Robocup23-Cams.git
 ```
 pip install Flask
 pip install opencv-python
+sudo apt-get install v4l-utils
 ```
 Note: opencv takes a long time to build, so make sure you have enough time for it to complete.
 
