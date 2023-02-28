@@ -53,7 +53,7 @@ back = 8
 
 ## Implementation
 
-The Flask app does run independently, but was built to be implementened with a motor controlling Flask app. See (The motor control github)[https://github.com/vcoppo23/Robocup] for an implementation.
+The Flask app does run independently, but was built to be implementened with a motor controlling Flask app. See [the motor control github](https://github.com/vcoppo23/Robocup) for an implementation.
 
 Or to implement into your own project, add an image tag to your HTML page and let the source be "http://{ip address of device}/video_feed#" where the number is the video feed you like to implement. Example with multiple cameras:
 ```
