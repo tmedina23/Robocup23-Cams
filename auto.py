@@ -13,7 +13,7 @@ def find_all(a_str, sub):
 instances = list(find_all(str(output), "/dev/video"))
 
 for x in range(len(instances)):
-    substring = output[instances[x]:instances[x]+7]
+    substring = output[instances[x]-1:instances[x]+7]
     print(substring)
 
 print(output)
