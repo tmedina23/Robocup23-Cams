@@ -10,6 +10,6 @@ def find_all(a_str, sub):
         yield start
         start += len(sub)
 
-list(find_all(str(output), "\n"))
+print(list(find_all(str(output), "\n")))
 
 print(output)
