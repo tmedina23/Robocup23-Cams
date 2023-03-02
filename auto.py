@@ -1,4 +1,4 @@
-import sys
+import subprocess
 
-data = sys.stdin.read()
-print(data)
+output = subprocess.check_output(['usb-devices'])
+print(output)
