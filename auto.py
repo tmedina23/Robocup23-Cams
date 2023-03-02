@@ -10,6 +10,10 @@ def find_all(a_str, sub):
         yield start
         start += len(sub)
 
-print(list(find_all(str(output), "/dev/video")))
+instances = list(find_all(str(output), "/dev/video"))
+
+for x in range(len(instances)):
+    substring = output[instances[x]:instances[x]+7]
+    print(substring)
 
 print(output)
