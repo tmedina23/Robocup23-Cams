@@ -26,7 +26,7 @@ def init_vars(output):
         cams.append(name)
         index = output[instances3[x]+14:instances3[x]+15]
         indices.append(index)
-        print(name + " " + index)
+        print(name + " " + str(index))
 
 def assign():
     for l in range(len(cams)):
