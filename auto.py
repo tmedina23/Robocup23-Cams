@@ -34,7 +34,8 @@ def assign():
 
     return final
 
+for x in instances:
+    print(x)
 print(output)
 init_vars(output)
-print(instances)
 print(assign())
