@@ -12,9 +12,9 @@ app = Flask(__name__)
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
 #camera device numbers
+claw_cam = 17
 front_left = 0
 front_right = 4
-claw_cam = 17
 back = 8
 
 #get frame from each camera, designate if camera is claw or not

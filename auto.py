@@ -1,4 +1,10 @@
+# Robocup'23 - Camera Stream
+# BSM Robotics
+# Thomas Medina
+
 import subprocess
+import cv2
+import numpy as np
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
 searching_for1 = "media" #+8
@@ -6,7 +12,8 @@ searching_for2 = "(" #-2
 searching_for3 = ")" #+14
 cams = []
 indices = []
-final = ["notassigned","notassigned","notassigned","notassigned"]
+semifinal = [999,999]
+final = [999,999,999,999]
 
 def find_all(a_str, sub):
     start = 0
@@ -21,24 +28,50 @@ instances2 = list(find_all(str(output), searching_for2))
 instances3 = list(find_all(str(output), searching_for3))
 
 def init_vars(output):
-    for x in range(len(instances2)):
+    for x in range(len(instances1)):
         name = output[instances1[x]+8:instances2[x]-2]
         cams.append(name)
         index = output[instances3[x]+14:instances3[x]+15]
-        indices.append(index)
+        indices.append(int(index))
         print(name)
         print(index)
 
 def assign():
     for l in range(len(cams)):
-        if (cams[l] == "uto"):
+        #if claw cam
+        if (cams[l] == "HD USB Camera: HD USB Camera"):
+            semifinal[0] = indices[l]
             final[0] = indices[l]
-        elif (cams[l] == "DME"):
+        #if front-left cam
+        elif (cams[l] == "USB 2.0 Camera: HD USB Camera"):
+            semifinal[1] = indices[l]
             final[1] = indices[l]
-        elif (cams[l] == "app"):
-            final[2] = indices[l]
+        #if front-right/back cam
+        else:
+            semifinal.append(indices[l])
 
-    return final
+    return semifinal
+
+def find_red():
+    cam = cv2.VideoCapture(semifinal[2])
+
+    _, frame = cam.read()
+
+    b = frame[:, :, :1]
+    g = frame[:, :, 1:2]
+    r = frame[:, :, 2:]
+
+    #get mean
+    b_mean = np.mean(b)
+    g_mean = np.mean(g)
+    r_mean = np.mean(r)
+
+    if (r_mean > b_mean and r_mean > g_mean):
+        final[2] = semifinal[2]
+        final[3] = semifinal[3]
+    else:
+        final[3] = semifinal[2]
+        final[2] = semifinal[3]
 
 
 print(output)
