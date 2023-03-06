@@ -1,7 +1,7 @@
 import subprocess
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
-searching_for = "\n\n"
+searching_for = "media"
 cams = []
 indices = []
 final = ["notassigned","notassigned","notassigned","notassigned"]
@@ -36,9 +36,9 @@ def assign():
 print("instances")
 for x in instances:
     print(x)
-print("\n\n")
+print("\n")
 print(output)
-print("\n\n")
+print("\n")
 init_vars(output)
-print("\n\n")
+print("\n")
 print(assign())
