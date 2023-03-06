@@ -24,7 +24,7 @@ def get_frame(cam_num):
 def index():
     return render_template('index.html')
 
-@app.route('/video_feed')
+@app.route('/video_feed1')
 def video_feed():
     return Response(get_frame(6), mimetype='multipart/x-mixed-replace; boundary=frame')
 
