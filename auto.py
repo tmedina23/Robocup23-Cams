@@ -1,6 +1,6 @@
 import subprocess
 
-output = subprocess.check_output(['v4l2-ctl --list-devices'])
+output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
 cams = []
 indices = []
 final = ["notassigned","notassigned","notassigned","notassigned"]
