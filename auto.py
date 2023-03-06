@@ -1,7 +1,9 @@
 import subprocess
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
-searching_for = "media"
+searching_for1 = "media" #+8
+searching_for2 = "(" #-2
+searching_for3 = ")" #+14
 cams = []
 indices = []
 final = ["notassigned","notassigned","notassigned","notassigned"]
@@ -14,14 +16,17 @@ def find_all(a_str, sub):
         yield start
         start += len(sub)
 
-instances = list(find_all(str(output), searching_for))
+instances1 = list(find_all(str(output), searching_for1))
+instances2 = list(find_all(str(output), searching_for2))
+instances3 = list(find_all(str(output), searching_for3))
 
 def init_vars(output):
-    for x in range(len(instances)):
-        name = output[instances[x]-3:instances[x]]
+    for x in range(len(instances2)):
+        name = output[instances1[x]+8:instances2[x]-2]
         cams.append(name)
-        index = output[instances[x]:instances[x]+3]
+        index = output[instances3[x]+14:instances3[x]+15]
         indices.append(index)
+        print(name + " " + index)
 
 def assign():
     for l in range(len(cams)):
@@ -33,10 +38,8 @@ def assign():
             final[2] = indices[l]
 
     return final
-print("instances")
-for x in instances:
-    print(x)
-print("\n")
+
+
 print(output)
 print("\n")
 init_vars(output)
