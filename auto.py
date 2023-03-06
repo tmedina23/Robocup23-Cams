@@ -1,6 +1,7 @@
 import subprocess
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
+searching_for = "\n\n"
 cams = []
 indices = []
 final = ["notassigned","notassigned","notassigned","notassigned"]
@@ -13,7 +14,7 @@ def find_all(a_str, sub):
         yield start
         start += len(sub)
 
-instances = list(find_all(str(output), "."))
+instances = list(find_all(str(output), searching_for))
 
 def init_vars(output):
     for x in range(len(instances)):
