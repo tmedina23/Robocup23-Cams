@@ -33,9 +33,12 @@ def assign():
             final[2] = indices[l]
 
     return final
-
+print("instances")
 for x in instances:
     print(x)
+print("\n\n")
 print(output)
+print("\n\n")
 init_vars(output)
+print("\n\n")
 print(assign())
