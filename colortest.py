@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # taking the input from webcam
-vid = cv2.VideoCapture(0)
+vid = cv2.VideoCapture(6)
 
 # running while loop just to make sure that
 # our program keep running until we stop it
