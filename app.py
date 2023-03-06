@@ -4,7 +4,6 @@
 
 from flask import Flask, render_template, Response
 import cv2
-import threading
 from auto import init_vars
 
 app = Flask(__name__)
