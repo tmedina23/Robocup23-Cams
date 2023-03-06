@@ -36,4 +36,5 @@ def assign():
 
 print(output)
 init_vars(output)
+print(instances)
 print(assign())
