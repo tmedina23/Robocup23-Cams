@@ -4,7 +4,6 @@
 
 from flask import Flask, render_template, Response
 import cv2
-from auto import init_vars
 from pysondb import db
 
 app = Flask(__name__)
