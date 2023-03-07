@@ -22,15 +22,16 @@ def find_all(a_str, sub):
         yield start
         start += len(sub)
 
-instances1 = find_all(str(output), searching_for1)
+instances1 = list(find_all(str(output), searching_for1))
 
 def init_vars(output):
-    name = output[instances1:instances1+len(instances1)]
-    cams.append(name)
-    index = output[instances1+len(instances1)+38:instances1+len(instances1)+40]
-    indices.append(index)
-    print(name)
-    print(index)
+    for x in range(len(instances1)):
+        name = output[instances1[x]:instances1[x]+len(instances1[x])]
+        cams.append(name)
+        index = output[instances1[x]+len(instances1[x])+38:instances1[x]+len(instances1[x])+40]
+        indices.append(index)
+        print(name)
+        print(index)
 
 def assign():
     for l in range(len(cams)):
