@@ -8,9 +8,7 @@ import numpy as np
 from pysondb import db
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
-searching_for1 = "media" #+8
-searching_for2 = "(" #-2
-searching_for3 = ")" #+14
+searching_for1 = "HD USB Camera: HD USB Camera"
 cams = []
 indices = []
 semifinal = [999,999]
@@ -24,15 +22,13 @@ def find_all(a_str, sub):
         yield start
         start += len(sub)
 
-instances1 = list(find_all(str(output), searching_for1))
-instances2 = list(find_all(str(output), searching_for2))
-instances3 = list(find_all(str(output), searching_for3))
+instances1 = find_all(str(output), searching_for1)
 
 def init_vars(output):
     for x in range(len(instances1)):
-        name = output[instances1[x]+8:instances2[x]-2]
+        name = output[instances1:instances1+len(instances1)]
         cams.append(name)
-        index = output[instances3[x]+14:instances3[x]+15]
+        index = output[instances1+len(instances1)+38:instances1+len(instances1)+40]
         indices.append(index)
         print(name)
         print(index)
@@ -57,4 +53,6 @@ print(output)
 print("\n")
 init_vars(output)
 print("\n")
-print(assign())
+print(*cams, sep = ", ")
+print("\n")
+print(*indices, sep = ", ")
