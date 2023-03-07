@@ -7,7 +7,7 @@ import threading
 app = Flask(__name__)
 
 # taking the input from webcam
-vid = cv2.VideoCapture(6)
+vid = cv2.VideoCapture(2)
 
 # running while loop just to make sure that
 # our program keep running until we stop it
@@ -26,7 +26,7 @@ def index():
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(get_frame(6), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(get_frame(2), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def run_thread(target, *args):
     thread = threading.Thread(target=target, args=args)
