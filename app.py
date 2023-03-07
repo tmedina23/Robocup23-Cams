@@ -5,16 +5,18 @@
 from flask import Flask, render_template, Response
 import cv2
 from auto import init_vars
+from pysondb import db
 
 app = Flask(__name__)
+database = db.getDb("camdb.json")
 
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
 #camera device numbers
-claw_cam = 17
-front_left = 0
-front_right = 4
-back = 8
+claw_cam_data = database.getBy({"name":"claw"})
+front_left_data = database.getBy({"name":"front_left"})
+front_right_data = database.getBy({"name":"front_right"})
+back_data = database.getBy({"name":"back"})
 
 #get frame from each camera, designate if camera is claw or not
 def get_frame(cam_num, claw):

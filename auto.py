@@ -5,6 +5,7 @@
 import subprocess
 import cv2
 import numpy as np
+from pysondb import db
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
 searching_for1 = "media" #+8
@@ -51,28 +52,6 @@ def assign():
             semifinal.append(indices[l])
 
     return semifinal
-
-def find_red():
-    cam = cv2.VideoCapture(semifinal[2])
-
-    _, frame = cam.read()
-
-    b = frame[:, :, :1]
-    g = frame[:, :, 1:2]
-    r = frame[:, :, 2:]
-
-    #get mean
-    b_mean = np.mean(b)
-    g_mean = np.mean(g)
-    r_mean = np.mean(r)
-
-    if (r_mean > b_mean and r_mean > g_mean):
-        final[2] = semifinal[2]
-        final[3] = semifinal[3]
-    else:
-        final[3] = semifinal[2]
-        final[2] = semifinal[3]
-
 
 print(output)
 print("\n")
