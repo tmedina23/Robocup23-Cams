@@ -12,10 +12,10 @@ database = db.getDb("camdb.json")
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
 #camera device numbers
-claw_cam_data = database.getBy({"name":"claw"})
-front_left_data = database.getBy({"name":"front_left"})
-front_right_data = database.getBy({"name":"front_right"})
-back_data = database.getBy({"name":"back"})
+claw_cam = 0
+front_left = 2
+front_right = 6
+back = 8
 
 #get frame from each camera, designate if camera is claw or not
 def get_frame(cam_num, claw):
