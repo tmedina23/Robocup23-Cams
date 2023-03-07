@@ -25,13 +25,12 @@ def find_all(a_str, sub):
 instances1 = find_all(str(output), searching_for1)
 
 def init_vars(output):
-    for x in range(len(instances1)):
-        name = output[instances1:instances1+len(instances1)]
-        cams.append(name)
-        index = output[instances1+len(instances1)+38:instances1+len(instances1)+40]
-        indices.append(index)
-        print(name)
-        print(index)
+    name = output[instances1:instances1+len(instances1)]
+    cams.append(name)
+    index = output[instances1+len(instances1)+38:instances1+len(instances1)+40]
+    indices.append(index)
+    print(name)
+    print(index)
 
 def assign():
     for l in range(len(cams)):
