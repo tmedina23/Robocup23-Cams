@@ -4,7 +4,7 @@
 
 from flask import Flask, render_template, Response
 import cv2
-from pysondb import db
+import pysondb as db
 
 app = Flask(__name__)
 database = db.getDb("camdb.json")
