@@ -33,7 +33,7 @@ def init_vars(output):
         name = output[instances1[x]+8:instances2[x]-2]
         cams.append(name)
         index = output[instances3[x]+14:instances3[x]+15]
-        indices.append(int(index))
+        indices.append(index)
         print(name)
         print(index)
 

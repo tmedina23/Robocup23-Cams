@@ -50,6 +50,10 @@
       document.getElementById("rear").src="{{ url_for('video_feed2') }}";
       document.getElementById("front_right").src="{{ url_for('video_feed3') }}";
     }
+    function unswap(){
+      document.getElementById("rear").src="{{ url_for('video_feed3') }}";
+      document.getElementById("front_right").src="{{ url_for('video_feed2') }}";
+    }
   </script>
 </body>
 </html>
