@@ -8,7 +8,7 @@ import numpy as np
 from pysondb import db
 
 output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
-searching_for1 = "HD USB Camera: HD USB Camera"
+searching_for1 = "USB 2.0 Camera: HD USB Camera"
 cams = []
 indices = []
 final = [999,999]
