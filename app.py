@@ -52,6 +52,12 @@ def get_frame(cam_num, claw):
 def index():
     return render_template('index.html')
 
+@app.route('/swap', methods=['GET', 'POST'])
+def swap():
+    
+@app.route('/unswap', methods=['GET', 'POST'])
+def unswap():
+
 #Route to claw camera
 @app.route('/video_feed0')
 def video_feed0():

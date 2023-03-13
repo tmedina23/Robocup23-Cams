@@ -11,8 +11,7 @@ output = subprocess.check_output(['v4l2-ctl', '--list-devices'])
 searching_for1 = "HD USB Camera: HD USB Camera"
 cams = []
 indices = []
-semifinal = [999,999]
-final = [999,999,999,999]
+final = [999,999]
 
 def find_all(a_str, sub):
     start = 0
@@ -37,17 +36,15 @@ def assign():
     for l in range(len(cams)):
         #if claw cam
         if (cams[l] == "HD USB Camera: HD USB Camera"):
-            semifinal[0] = indices[l]
             final[0] = indices[l]
         #if front-left cam
         elif (cams[l] == "USB 2.0 Camera: HD USB Camera"):
-            semifinal[1] = indices[l]
             final[1] = indices[l]
         #if front-right/back cam
         else:
-            semifinal.append(indices[l])
+            final.append(indices[l])
 
-    return semifinal
+    return final
 
 print(output)
 print("\n")

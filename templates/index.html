@@ -39,7 +39,7 @@
     <div>2</div>
     <div><img src="{{ url_for('video_feed2') }}" title="Front Right" id="front_right"></div>
     <div>4</div>
-    <div><img src="{{ url_for('video_feed0') }}" title="Arm" id="arm"></div>
+    <div><img src="{{ url_for('video_feed0') }}" title="Claw" id="claw"></div>
     <div>6</div>
     <div>7</div>
     <div><img src="{{ url_for('video_feed3') }}" title="Center Rear" id="rear"></div>
@@ -49,10 +49,30 @@
     function swap(){
       document.getElementById("rear").src="{{ url_for('video_feed2') }}";
       document.getElementById("front_right").src="{{ url_for('video_feed3') }}";
+      $.ajax({
+				url: '/swap',
+				type: 'POST',
+				success: function(response) {
+					console.log(response);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
     }
     function unswap(){
       document.getElementById("rear").src="{{ url_for('video_feed3') }}";
       document.getElementById("front_right").src="{{ url_for('video_feed2') }}";
+      $.ajax({
+				url: '/unswap',
+				type: 'POST',
+				success: function(response) {
+					console.log(response);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
     }
   </script>
 </body>
