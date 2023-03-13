@@ -25,9 +25,9 @@ instances1 = list(find_all(str(output), searching_for1))
 
 def init_vars(output):
     for x in range(len(instances1)):
-        name = output[instances1[x]:instances1[x]+len(instances1[x])]
+        name = output[instances1[x]:instances1[x]+len(searching_for1)]
         cams.append(name)
-        index = output[instances1[x]+len(instances1[x])+38:instances1[x]+len(instances1[x])+40]
+        index = output[instances1[x]+len(instances1[x])+38:instances1[x]+len(searching_for1)+40]
         indices.append(index)
         print(name)
         print(index)
