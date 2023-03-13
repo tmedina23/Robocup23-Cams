@@ -54,9 +54,11 @@ def index():
 
 @app.route('/swap', methods=['GET', 'POST'])
 def swap():
-    
+    return render_template('index.html')
+
 @app.route('/unswap', methods=['GET', 'POST'])
 def unswap():
+    return render_template('index.html')
 
 #Route to claw camera
 @app.route('/video_feed0')
