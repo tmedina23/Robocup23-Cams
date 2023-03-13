@@ -46,7 +46,7 @@ def assign():
 
     return final
 
-print(output)
+print(str(output))
 print("\n")
 init_vars(output)
 print("\n")
