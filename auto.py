@@ -17,8 +17,12 @@ camdb=db.getDb("camdb.json")
 def name_index(instance, device):
     name = output[instance:instance+len(device)]
     cams.append(name)
-    index = output[instance+len(device)+38:instance+len(device)+39]
-    indices.append(index)
+    index = output[instance+len(device)+38:instance+len(device)+40]
+    if("\\" in index):
+        index = output[instance+len(device)+38:instance+len(device)+39]
+        indices.append(index)
+    else:
+        indices.append(index)
 
 def set_arrays():
     for device in searching:
