@@ -16,7 +16,7 @@ final = [999,999]
 instance = str(output).find(searching_for1)
 
 def init_vars(output):
-    name = output[instance-len(searching_for1):instance]
+    name = output[instance:instance+len(searching_for1)]
     cams.append(name)
     index = output[instance+len(searching_for1)+38:instance+len(searching_for1)+39]
     indices.append(index)
