@@ -47,8 +47,8 @@
   </div>
   <script>
     function swap(){
-      document.getElementById("rear").src="{{ url_for('video_feed2') }}";
-      document.getElementById("front_right").src="{{ url_for('video_feed3') }}";
+      document.getElementById("front_left").src="{{ url_for('video_feed2') }}";
+      document.getElementById("front_right").src="{{ url_for('video_feed1') }}";
       $.ajax({
 				url: '/swap',
 				type: 'POST',
@@ -61,7 +61,7 @@
 			});
     }
     function unswap(){
-      document.getElementById("rear").src="{{ url_for('video_feed3') }}";
+      document.getElementById("front_left").src="{{ url_for('video_feed1') }}";
       document.getElementById("front_right").src="{{ url_for('video_feed2') }}";
       $.ajax({
 				url: '/unswap',

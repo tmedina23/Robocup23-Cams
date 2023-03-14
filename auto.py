@@ -39,21 +39,28 @@ def updateDB():
         #if claw cam
         if (cams[l] == "HD USB Camera: HD USB Camera"):
             camdb.updateById("277044989003970700",{"index":str(indices[l])})
-        #if front-left cam
+        #if back cam
         elif (cams[l] == "USB 2.0 Camera: HD USB Camera"):
-            camdb.updateById("860846966079555970",{"index":str(indices[l])})
+            camdb.updateById("198339096107932300",{"index":str(indices[l])})
         elif (cams[l] == "HD USB Camera: USB Camera" and dupe == False):
             camdb.updateById("870675630757077322",{"index":str(indices[l])})
             dupe = True
         elif (cams[l] == "HD USB Camera: USB Camera" and dupe == True):
-            camdb.updateById("198339096107932300",{"index":str(indices[l])})
-            
+            camdb.updateById("860846966079555970",{"index":str(indices[l])})
 
-print("\n")
-print(output)
-set_arrays()
-updateDB()
-print("\n")
-print(*cams, sep = ", ")
-print("\n")
-print(*indices, sep = ", ")
+def getindexdb(id):
+    camdata = str(camdb.getById(id))
+    splitcomma = camdata.split(",")[2]
+    index1 = splitcomma.split(":")[1]
+    index = int(index1.replace("'","").strip())
+    return index        
+
+def run_auto():
+    print("running subprocess...")
+    print("assigning values to variables...")
+    set_arrays()
+    print("updating database...")
+    updateDB()
+    print("complete")
+
+run_auto()
