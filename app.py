@@ -14,24 +14,15 @@ def getindexdb(id):
     splitcomma = camdata.split(",")[2]
     index1 = splitcomma.split(":")[1]
     index = index1.replace("'","").strip()
-    print(index)
-
-#claw
-getindexdb(277044989003970700)
-#front-left
-getindexdb(860846966079555970)
-#front-right
-getindexdb(870675630757077322)
-#back
-getindexdb(198339096107932300)
+    return index
 
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
 #camera device numbers
-claw_cam = 98899
-front_left = 0
-front_right = 2
-back = 6
+claw_cam = getindexdb(277044989003970700)
+front_left = getindexdb(860846966079555970)
+front_right = getindexdb(870675630757077322)
+back = getindexdb(198339096107932300)
 
 #get frame from each camera, designate if camera is claw or not
 def get_frame(cam_num, claw):
