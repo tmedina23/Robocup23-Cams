@@ -18,6 +18,7 @@ instance = str(output).find(searching_for1)
 def init_vars(output):
     name = output[instance:instance+len(searching_for1)]
     cams.append(name)
+    print(output)
     index = output[instance+len(searching_for1)+38:instance+len(searching_for1)+39]
     indices.append(index)
 
