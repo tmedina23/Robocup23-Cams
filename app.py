@@ -7,7 +7,19 @@ from flask import Flask, render_template, Response
 import cv2
 
 app = Flask(__name__)
-database = db.getDb("camdb.json")
+camdb = db.getDb("camdb.json")
+
+def getindexdb(id):
+    camdata = str(camdb.find(id))
+    splitcomma = camdata.split(",")[2]
+    index = splitcomma.split(":")[1].replace(",","")
+
+#front-left
+getindexdb(860846966079555970)
+#front-right
+getindexdb(870675630757077322)
+#back
+getindexdb(198339096107932300)
 
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices

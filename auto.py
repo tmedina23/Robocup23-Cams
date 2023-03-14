@@ -11,7 +11,8 @@ output = str(subprocess.check_output(['v4l2-ctl', '--list-devices']))
 searching = {"USB 2.0 Camera: HD USB Camera", "HD USB Camera: HD USB Camera", "HD USB Camera: USB Camera"}
 cams = []
 indices = []
-final = [999,999]
+
+camdb=db.getDb("camdb.json")
 
 def name_index(instance, device):
     name = output[instance:instance+len(device)]
@@ -28,21 +29,22 @@ def set_arrays():
         else:
             name_index(instance,device)
 
-def assign():
+def updateDB():
+    dupe = False
     for l in range(len(cams)):
         #if claw cam
         if (cams[l] == "HD USB Camera: HD USB Camera"):
-            final[0] = indices[l]
+            camdb.updateById("277044989003970700",{"index":str(indices[l])})
         #if front-left cam
         elif (cams[l] == "USB 2.0 Camera: HD USB Camera"):
-            final[1] = indices[l]
-        #if front-right/back cam
-        else:
-            final.append(indices[l])
+            camdb.updateById("860846966079555970",{"index":str(indices[l])})
+        elif (cams[l] == "HD USB Camera: USB Camera" and dupe == False):
+            camdb.updateById("870675630757077322",{"index":str(indices[l])})
+            dupe = True
+        elif (cams[l] == "HD USB Camera: USB Camera" and dupe == True):
+            camdb.updateById("198339096107932300",{"index":str(indices[l])})
+            
 
-    return final
-
-print("Testing Og way:")
 print("\n")
 print(output)
 set_arrays()
