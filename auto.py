@@ -48,6 +48,7 @@ def updateDB():
 print("\n")
 print(output)
 set_arrays()
+updateDB()
 print("\n")
 print(*cams, sep = ", ")
 print("\n")

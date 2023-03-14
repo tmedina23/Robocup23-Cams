@@ -14,6 +14,8 @@ def getindexdb(id):
     splitcomma = camdata.split(",")[2]
     index = splitcomma.split(":")[1].replace(",","")
 
+#claw
+getindexdb(277044989003970700)
 #front-left
 getindexdb(860846966079555970)
 #front-right
