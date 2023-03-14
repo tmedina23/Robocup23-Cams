@@ -13,7 +13,7 @@ def getindexdb(id):
     camdata = str(camdb.getById(id))
     splitcomma = camdata.split(",")[2]
     index1 = splitcomma.split(":")[1]
-    index = index1.replace("'","").strip()
+    index = int(index1.replace("'","").strip())
     return index
 
 #use the following command in your terminal to find device numbers
