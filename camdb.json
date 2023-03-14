@@ -1,0 +1,28 @@
+{
+   "data": [
+      {
+         "name": "HD USB Camera: HD USB Camera",
+         "pos": "claw",
+         "index": "0",
+         "id": 277044989003970700
+      },
+      {
+         "name": "USB 2.0 Camera: HD USB Camera",
+         "pos": "front-left",
+         "index": "0",
+         "id": 860846966079555970
+      },
+      {
+         "name": "HD USB Camera: USB Camera",
+         "pos": "front-right",
+         "index": "0",
+         "id": 870675630757077322
+      },
+      {
+         "name": "HD USB Camera: USB Camera",
+         "pos": "back",
+         "index": "1",
+         "id": 198339096107932300
+      }
+   ]
+}
