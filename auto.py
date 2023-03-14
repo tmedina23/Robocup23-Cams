@@ -8,26 +8,25 @@ import numpy as np
 from pysondb import db
 
 output = str(subprocess.check_output(['v4l2-ctl', '--list-devices']))
-searching_for1 = "USB 2.0 Camera: HD USB Camera"
+searching = {"USB 2.0 Camera: HD USB Camera", "HD USB Camera: HD USB Camera", "HD USB Camera: USB Camera"}
 cams = []
 indices = []
 final = [999,999]
 
-instance = output.find(searching_for1)
-
-def init_vars():
-    name = output[instance:instance+len(searching_for1)]
+def name_index(instance, device):
+    name = output[instance:instance+len(device)]
     cams.append(name)
-    index = output[instance+len(searching_for1)+38:instance+len(searching_for1)+39]
+    index = output[instance+len(device)+38:instance+len(device)+39]
     indices.append(index)
 
-def init_vars_split():
-    split_newline = output.split('\n\n')
-    for x in split_newline:
-        name = x.split(" (")[0]
-        index = x.split("video")[1]
-        cams.append(name)
-        indices.append(index)
+def set_arrays():
+    for device in searching:
+        instance = output.find(device)
+        if (device == "HD USB Camera: USB Camera"):
+            name_index(instance, device)
+            name_index(output.find(device, instance+len(device)+1), device)
+        else:
+            name_index(instance,device)
 
 def assign():
     for l in range(len(cams)):
@@ -46,7 +45,7 @@ def assign():
 print("Testing Og way:")
 print("\n")
 print(output)
-init_vars()
+set_arrays()
 print("\n")
 print("Name: " + str(instance) +" "+ str(len(searching_for1)))
 print(*cams, sep = ", ")
