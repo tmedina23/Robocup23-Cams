@@ -12,7 +12,8 @@ camdb = db.getDb("camdb.json")
 def getindexdb(id):
     camdata = str(camdb.getById(id))
     splitcomma = camdata.split(",")[2]
-    index = splitcomma.split(":")[1]
+    index1 = splitcomma.split(":")[1]
+    index = index1.replace("'","").strip()
     print(index)
 
 #claw
