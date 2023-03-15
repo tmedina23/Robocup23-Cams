@@ -57,11 +57,14 @@ def updateDB():
             camdb.updateById("860846966079555970",{"index":str(indices[l])})
 
 #function not used in this file, helper function for app.py
-def getindexdb(id):
+def getindexdb(id, ret_string):
     camdata = str(camdb.getById(id))
     splitcomma = camdata.split(",")[2]
     index1 = splitcomma.split(":")[1]
-    index = int(index1.replace("'","").strip())
+    if(ret_string):
+        index = index1.replace("'","").strip()
+    else:
+        index = int(index1.replace("'","").strip())
     return index        
 
 #runs everthing at once
@@ -72,5 +75,3 @@ def run_auto():
     print("updating database...")
     updateDB()
     print("complete")
-
-run_auto()

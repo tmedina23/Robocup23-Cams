@@ -23,10 +23,16 @@ back_id = 198339096107932300
 
 #old(v1.0)^^^^^^ instructions
 #new version automatically asigns indices
-claw_cam = auto.getindexdb(claw_id)
-front_left = auto.getindexdb(front_left_id)
-front_right = auto.getindexdb(front_right_id)
-back = auto.getindexdb(back_id)
+final = auto.getindexdb(209847509711096578, True)
+if(final == "False"):
+    auto.run_auto()
+else:
+    print("Database Final")
+
+claw_cam = auto.getindexdb(claw_id, False)
+front_left = auto.getindexdb(front_left_id, False)
+front_right = auto.getindexdb(front_right_id, False)
+back = auto.getindexdb(back_id, False)
 
 #get frame from each camera, designate if camera is claw or not
 def get_frame(cam_num, claw):
@@ -68,6 +74,7 @@ def index():
 def swap():
     camdb.updateById(front_left_id,{"index":str(front_right)})
     camdb.updateById(front_right_id,{"index":str(front_left)})
+    camdb.updateById(209847509711096578,{"index":"True"})
     print("Request recieved: Database updated")
     return render_template('index.html')
 
@@ -76,6 +83,7 @@ def swap():
 def unswap():
     camdb.updateById(front_left_id,{"index":str(front_left)})
     camdb.updateById(front_right_id,{"index":str(front_right)})
+    camdb.updateById(209847509711096578,{"index":"True"})
     print("Request recieved: Database updated")
     return render_template('index.html')
 
