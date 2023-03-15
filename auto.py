@@ -7,13 +7,19 @@ import cv2
 import numpy as np
 from pysondb import db
 
+#Runs the command and saves the output
 output = str(subprocess.check_output(['v4l2-ctl', '--list-devices']))
+#System names for each camera device
 searching = {"USB 2.0 Camera: HD USB Camera", "HD USB Camera: HD USB Camera", "HD USB Camera: USB Camera"}
+#names of each camera get saved here
 cams = []
+#index of each camera get saved here
 indices = []
 
+#get the databse
 camdb=db.getDb("camdb.json")
 
+#helper function
 def name_index(instance, device):
     name = output[instance:instance+len(device)]
     cams.append(name)
@@ -24,6 +30,7 @@ def name_index(instance, device):
     else:
         indices.append(index)
 
+#Sets the arrays using data from the subprocess command
 def set_arrays():
     for device in searching:
         instance = output.find(device)
@@ -33,6 +40,7 @@ def set_arrays():
         else:
             name_index(instance,device)
 
+#Updates the database using database ids and arrays
 def updateDB():
     dupe = False
     for l in range(len(cams)):
@@ -48,6 +56,7 @@ def updateDB():
         elif (cams[l] == "HD USB Camera: USB Camera" and dupe == True):
             camdb.updateById("860846966079555970",{"index":str(indices[l])})
 
+#function not used in this file, helper function for app.py
 def getindexdb(id):
     camdata = str(camdb.getById(id))
     splitcomma = camdata.split(",")[2]
@@ -55,6 +64,7 @@ def getindexdb(id):
     index = int(index1.replace("'","").strip())
     return index        
 
+#runs everthing at once
 def run_auto():
     print("running subprocess...")
     print("assigning values to variables...")

@@ -5,11 +5,13 @@
 from pysondb import db
 from flask import Flask, render_template, Response
 import cv2
+#imports functions from auto.py
 import auto
 
 app = Flask(__name__)
 camdb = db.getDb("camdb.json")
 
+#database IDs for each camera
 claw_id = 277044989003970700
 front_left_id = 860846966079555970
 front_right_id = 870675630757077322
@@ -18,6 +20,9 @@ back_id = 198339096107932300
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
 #camera device numbers
+
+#old(v1.0)^^^^^^ instructions
+#new version automatically asigns indices
 claw_cam = auto.getindexdb(claw_id)
 front_left = auto.getindexdb(front_left_id)
 front_right = auto.getindexdb(front_right_id)
@@ -58,6 +63,7 @@ def get_frame(cam_num, claw):
 def index():
     return render_template('index.html')
 
+#Updates the database to swap the indices 
 @app.route('/swap', methods=['GET', 'POST'])
 def swap():
     camdb.updateById(front_left_id,{"index":str(front_right)})
@@ -65,6 +71,7 @@ def swap():
     print("Request recieved: Database updated")
     return render_template('index.html')
 
+#swaps them back
 @app.route('/unswap', methods=['GET', 'POST'])
 def unswap():
     camdb.updateById(front_left_id,{"index":str(front_left)})
