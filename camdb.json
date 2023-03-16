@@ -3,32 +3,38 @@
       {
          "name": "HD USB Camera: HD USB Camera",
          "pos": "claw",
-         "index": "2",
+         "index": "4",
          "id": 277044989003970700
       },
       {
          "name": "HD USB Camera: USB Camera",
          "pos": "front-left",
-         "index": "8",
+         "index": "0",
          "id": 860846966079555970
       },
       {
          "name": "HD USB Camera: USB Camera",
          "pos": "front-right",
-         "index": "4",
+         "index": "8",
          "id": 870675630757077322
       },
       {
          "name": "USB 2.0 Camera: HD USB Camera",
          "pos": "back",
-         "index": "0",
+         "index": "6",
          "id": 198339096107932300
       },
       {
          "name": "final",
          "pos": "final",
-         "index": "False",
+         "index": "True",
          "id": 209847509711096578
+      },
+      {
+         "name": "dev_num",
+         "pos": "dev_num",
+         "index": "7",
+         "id": 283699290575417516
       }
    ]
 }
