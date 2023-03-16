@@ -23,6 +23,8 @@ back_id = 198339096107932300
 
 #old(v1.0)^^^^^^ instructions
 #new version automatically asigns indices
+
+auto.checkUpdate()
 final = auto.getindexdb(209847509711096578, True)
 if(final == "False"):
     auto.run_auto()

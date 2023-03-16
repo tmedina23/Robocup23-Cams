@@ -9,6 +9,7 @@ from pysondb import db
 
 #Runs the command and saves the output
 output = str(subprocess.check_output(['v4l2-ctl', '--list-devices']))
+output_ls = str(subprocess.check_output(['lsusb']))
 #System names for each camera device
 searching = {"USB 2.0 Camera: HD USB Camera", "HD USB Camera: HD USB Camera", "HD USB Camera: USB Camera"}
 #names of each camera get saved here
@@ -65,7 +66,15 @@ def getindexdb(id, ret_string):
         index = index1.replace("'","").strip()
     else:
         index = int(index1.replace("'","").strip())
-    return index        
+    return index     
+
+#check for changes in device_number using "lsusb"
+def checkUpdate():
+    presliced = output_ls.split(":")[0]
+    dev_number = int(presliced[-2:])
+    if(dev_number > getindexdb(id,False)):
+        camdb.updateById(209847509711096578,{"index":"False"})
+        camdb.updateById(283699290575417516,{"index":dev_number})
 
 #runs everthing at once
 def run_auto():
