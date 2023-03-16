@@ -71,11 +71,15 @@ def getindexdb(id, ret_string):
 #check for changes in device_number using "lsusb"
 def checkUpdate():
     print(output_ls)
-    presliced = output_ls.split(":")[0]
-    dev_number = int(presliced[-2:])
-    if(dev_number > getindexdb(283699290575417516,False)):
-        camdb.updateById(209847509711096578,{"index":"False"})
-        camdb.updateById(283699290575417516,{"index":dev_number})
+    all_devices = output_ls.split("\n")
+    for x in range(len(all_devices)):
+        presliced = all_devices.split(":")[0]
+        print(presliced)
+        dev_number = int(presliced[-2:])
+        print(dev_number)
+        if(dev_number > getindexdb(283699290575417516,False)):
+            camdb.updateById(209847509711096578,{"index":"False"})
+            camdb.updateById(283699290575417516,{"index":dev_number})
 
 #runs everthing at once
 def run_auto():
