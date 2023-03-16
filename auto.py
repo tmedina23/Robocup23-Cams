@@ -71,7 +71,7 @@ def getindexdb(id, ret_string):
 #check for changes in device_number using "lsusb"
 def checkUpdate():
     print(output_ls)
-    all_devices = output_ls.split("\n")
+    all_devices = output_ls.split("\\n")
     print(len(all_devices))
     print(all_devices)
     for x in range(len(all_devices)):
