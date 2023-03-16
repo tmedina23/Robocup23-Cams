@@ -72,7 +72,7 @@ def getindexdb(id, ret_string):
 def checkUpdate():
     presliced = output_ls.split(":")[0]
     dev_number = int(presliced[-2:])
-    if(dev_number > getindexdb(id,False)):
+    if(dev_number > getindexdb(283699290575417516,False)):
         camdb.updateById(209847509711096578,{"index":"False"})
         camdb.updateById(283699290575417516,{"index":dev_number})
 
