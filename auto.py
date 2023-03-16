@@ -74,7 +74,7 @@ def checkUpdate():
     all_devices = output_ls.split("\\n")
     print(len(all_devices))
     print(all_devices)
-    for x in range(len(all_devices)):
+    for x in range(len(all_devices)-1):
         presliced = all_devices[x].split(":")[0]
         print(presliced)
         dev_number = int(presliced[-2:])
