@@ -74,6 +74,7 @@ def checkUpdate():
     all_devices = output_ls.split("\\n")
     print(len(all_devices))
     print(all_devices)
+    highest = 0
     for x in range(len(all_devices)-1):
         presliced = all_devices[x].split(":")[0]
         print(presliced)
@@ -82,6 +83,8 @@ def checkUpdate():
         if(dev_number > getindexdb(283699290575417516,False)):
             camdb.updateById(209847509711096578,{"index":"False"})
             camdb.updateById(283699290575417516,{"index":dev_number})
+            if(dev_number > highest):
+                highest = dev_number
 
 #runs everthing at once
 def run_auto():
