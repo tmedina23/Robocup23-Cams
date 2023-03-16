@@ -70,6 +70,7 @@ def getindexdb(id, ret_string):
 
 #check for changes in device_number using "lsusb"
 def checkUpdate():
+    print(output_ls)
     presliced = output_ls.split(":")[0]
     dev_number = int(presliced[-2:])
     if(dev_number > getindexdb(283699290575417516,False)):
@@ -84,3 +85,5 @@ def run_auto():
     print("updating database...")
     updateDB()
     print("complete")
+
+checkUpdate()
