@@ -25,8 +25,8 @@ back_id = 198339096107932300
 #new version automatically asigns indices
 
 auto.checkUpdate()
-final = auto.getindexdb(209847509711096578, True)
-if(final == "False"):
+final = bool(auto.getindexdb(209847509711096578, True))
+if(not final):
     auto.run_auto()
 else:
     print("Database Final")
