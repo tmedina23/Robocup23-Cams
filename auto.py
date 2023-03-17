@@ -86,6 +86,8 @@ def checkUpdate():
         camdb.updateById(209847509711096578,{"index":"False"})
         camdb.updateById(283699290575417516,{"index":highest})
         print("Database Updated: New highest dev_number")
+    else:
+        camdb.updateById(209847509711096578,{"index":"True"})
     
 
 #runs everthing at once
