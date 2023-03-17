@@ -74,9 +74,7 @@ def checkUpdate():
     highest = 0
     for x in range(len(all_devices)-1):
         presliced = all_devices[x].split(":")[0]
-        print(presliced)
         dev_number = int(presliced[-2:])
-        print(dev_number)
         if(dev_number > highest):
             highest = dev_number
     print("Current Highest Device Number: " + str(highest))
