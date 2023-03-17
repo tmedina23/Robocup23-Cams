@@ -26,6 +26,7 @@ back_id = 198339096107932300
 
 auto.checkUpdate()
 final = bool(auto.getindexdb(209847509711096578, True))
+print(final)
 if(not final):
     auto.run_auto()
 else:
