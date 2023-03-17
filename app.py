@@ -25,8 +25,8 @@ back_id = 198339096107932300
 #new version automatically asigns indices
 
 auto.checkUpdate()
-print(auto.getindexdb(209847509711096578, True))
-final = bool(auto.getindexdb(209847509711096578, True))
+word = auto.getindexdb(209847509711096578, True)
+final = bool(word)
 print(final)
 if(not final):
     auto.run_auto()
