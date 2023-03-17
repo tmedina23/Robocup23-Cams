@@ -96,3 +96,5 @@ def run_auto():
     print("updating database...")
     updateDB()
     print("complete")
+
+run_auto()
