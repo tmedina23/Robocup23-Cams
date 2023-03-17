@@ -92,13 +92,9 @@ def checkUpdate():
 
 #runs everthing at once
 def run_auto():
-    print(cams)
-    print(indices)
     print("running subprocess...")
     print("assigning values to variables...")
     set_arrays()
-    print(cams)
-    print(indices)
     print("updating database...")
     updateDB()
     print("complete")
