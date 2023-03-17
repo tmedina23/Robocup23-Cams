@@ -79,7 +79,7 @@ def checkUpdate():
         print(dev_number)
         if(dev_number > highest):
             highest = dev_number
-    print("Current Highest Device Number: " + highest)
+    print("Current Highest Device Number: " + str(ighest))
     if(highest > getindexdb(283699290575417516, False)):
         camdb.updateById(209847509711096578,{"index":"False"})
         camdb.updateById(283699290575417516,{"index":dev_number})
