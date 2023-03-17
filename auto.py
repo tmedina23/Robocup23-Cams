@@ -85,6 +85,7 @@ def checkUpdate():
             camdb.updateById(283699290575417516,{"index":dev_number})
             if(dev_number > highest):
                 highest = dev_number
+    print(highest)
 
 #runs everthing at once
 def run_auto():
