@@ -70,22 +70,21 @@ def getindexdb(id, ret_string):
 
 #check for changes in device_number using "lsusb"
 def checkUpdate():
-    print(output_ls)
     all_devices = output_ls.split("\\n")
-    print(len(all_devices))
-    print(all_devices)
     highest = 0
     for x in range(len(all_devices)-1):
         presliced = all_devices[x].split(":")[0]
         print(presliced)
         dev_number = int(presliced[-2:])
         print(dev_number)
-        if(dev_number > getindexdb(283699290575417516,False)):
-            camdb.updateById(209847509711096578,{"index":"False"})
-            camdb.updateById(283699290575417516,{"index":dev_number})
-            if(dev_number > highest):
-                highest = dev_number
-    print(highest)
+        if(dev_number > highest):
+            highest = dev_number
+    print("Current Highest Device Number: " + highest)
+    if(highest > getindexdb(283699290575417516, False)):
+        camdb.updateById(209847509711096578,{"index":"False"})
+        camdb.updateById(283699290575417516,{"index":dev_number})
+        print("Database Updated: New highest dev_number")
+    
 
 #runs everthing at once
 def run_auto():
