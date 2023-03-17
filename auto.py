@@ -52,10 +52,10 @@ def updateDB():
         elif (cams[l] == "USB 2.0 Camera: HD USB Camera"):
             camdb.updateById("198339096107932300",{"index":str(indices[l])})
         elif (cams[l] == "HD USB Camera: USB Camera" and dupe == False):
-            camdb.updateById("870675630757077322",{"index":str(indices[l])})
+            camdb.updateById("860846966079555970",{"index":str(indices[l])})
             dupe = True
         elif (cams[l] == "HD USB Camera: USB Camera" and dupe == True):
-            camdb.updateById("860846966079555970",{"index":str(indices[l])})
+            camdb.updateById("870675630757077322",{"index":str(indices[l])})
 
 #function not used in this file, helper function for app.py
 def getindexdb(id, ret_string):
@@ -82,7 +82,7 @@ def checkUpdate():
     print("Current Highest Device Number: " + str(highest))
     if(highest > getindexdb(283699290575417516, False)):
         camdb.updateById(209847509711096578,{"index":"False"})
-        camdb.updateById(283699290575417516,{"index":dev_number})
+        camdb.updateById(283699290575417516,{"index":highest})
         print("Database Updated: New highest dev_number")
     
 
