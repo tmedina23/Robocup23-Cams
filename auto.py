@@ -60,9 +60,13 @@ def updateDB():
 #function not used in this file, helper function for app.py
 def getindexdb(id, ret_string):
     camdata = str(camdb.getById(id))
+    #{"name": "final","pos": "final","index": "False","id": 209847509711096578}
     splitcomma = camdata.split(",")[2]
+    #"index": "False"
     index1 = splitcomma.split(":")[1]
+    # "False"
     if(ret_string):
+        #False
         index = index1.replace("'","").strip()
     else:
         index = int(index1.replace("'","").strip())
