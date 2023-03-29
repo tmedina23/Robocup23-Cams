@@ -20,6 +20,7 @@ pip install Flask
 pip install opencv-python
 pip install pysondb
 pip install numpy
+sudo apt-get install v4l-utils
 ```
 Note: opencv takes hours to build (no seriously), so make sure you have enough time for it to complete.
 
@@ -40,7 +41,7 @@ To use the commands, right click anywhere on the page, click on inspect element,
 
 ## Implementation
 
-The Flask app does run independently, but was built to be implementened with a motor controlling Flask app. See https://github.com/vcoppo23/Robocup for an implementation.
+The Flask app does run independently, but was built to be implementened with a motor controlling Flask app. See [the motor control github](https://github.com/vcoppo23/Robocup) for an implementation.
 
 Or to implement into a different project, add an image tag to your HTML page and let the source be "http://{ip address of camera device}/video_feed#" where the number is the video feed you like to implement. Example with multiple cameras:
 ```
