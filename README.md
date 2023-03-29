@@ -18,9 +18,14 @@ git clone https://github.com/tmedina23/Robocup23-Cams.git
 ```
 pip install Flask
 pip install opencv-python
+pip install pysondb
+pip install numpy
 sudo apt-get install v4l-utils
 ```
-Note: opencv takes a long time to build, so make sure you have enough time for it to complete.
+Note: opencv takes hours to build (no seriously), so make sure you have enough time for it to complete.
+
+## Running onboot.py when the pi boots
+in progress...
 
 ## Starting the stream
 
@@ -29,36 +34,51 @@ sudo python app.py
 ```
 Once started, enter the IP adress of the device into your web browser to view the stream.
 
-## Fiding and correcting the cameras
+## Swaping Indexes
+Two of the cameras (front left and front right) have identical names, so if you notice they aren't in the right spot on the html page you can use the command swap() in the console to visually swap the images on screen, and update the database so it'll stay if you reboot the flask stream. There is also an unswap() function that returns it to the way it was to begin with.
 
-Before Starting the stream you will need to change the device numbers in app.py:
-While cameras are pluged in, use the following command to find the device numbers for each of the cameras
-```
-v4l2-ctl --list-devices
-```
-The ouput should look like this, one for each device and with different numbers:
-```
-HD USB Camera: HD USB Camera (usb-3f980000.usb-1.2):
-	/dev/video0
-	/dev/video1
-	/dev/media3
-```
-Take the top number (eg. "0" from "/dev/video0") for each camera and assign it to the variables as seen below. Then run the code and make sure each camera is in the right spot or adjust as needed.
-```
-#camera device numbers
-front_left = 0
-front_right = 4
-claw_cam = 17
-back = 8
-```
+To use the commands, right click anywhere on the page, click on inspect element, then click console at the top of the popup, then type the command swap(), or unswap() with parenthesis and hit enter.
 
 ## Implementation
 
 The Flask app does run independently, but was built to be implementened with a motor controlling Flask app. See [the motor control github](https://github.com/vcoppo23/Robocup) for an implementation.
 
-Or to implement into your own project, add an image tag to your HTML page and let the source be "http://{ip address of device}/video_feed#" where the number is the video feed you like to implement. Example with multiple cameras:
+Or to implement into a different project, add an image tag to your HTML page and let the source be "http://{ip address of camera device}/video_feed#" where the number is the video feed you like to implement. Example with multiple cameras:
 ```
 <img src="http://000.000.00.000/video_feed0" title="Front Left">
 <img src="http://000.000.00.000/video_feed1" title="Front Right">
 <img src="http://000.000.00.000/video_feed2" title="Center Rear">
+```
+
+To implement the swap() and unswap() add the following code to the project as a part of the javascript where "000.000.00.000" is the ip address of the camera pi:
+
+```
+function swap(){
+      document.getElementById("front_left").src="http://000.000.00.000/video_feed2";
+      document.getElementById("front_right").src="http://000.000.00.000/video_feed1";
+      $.ajax({
+				url: 'http://000.000.00.000/swap',
+				type: 'POST',
+				success: function(response) {
+					console.log(response);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+}
+function unswap(){
+    document.getElementById("front_left").src="http://000.000.00.000/video_feed1";
+    document.getElementById("front_right").src="http://000.000.00.000/video_feed2";
+    $.ajax({
+		  url: 'http://000.000.00.000/unswap',
+		  type: 'POST',
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+}
 ```
