@@ -35,9 +35,16 @@ sudo python app.py
 Once started, enter the IP adress of the device into your web browser to view the stream.
 
 ## Swaping Indexes
-Two of the cameras (front left and front right) have identical names, so if you notice they aren't in the right spot on the html page you can use the command swap() in the console to visually swap the images on screen, and update the database so it'll stay if you reboot the flask stream. There is also an unswap() function that returns it to the way it was to begin with.
+Two of the cameras (front left and front right) have identical names, so if you notice they aren't in the right spot on the html page you can use the command swap() in the console to visually swap the images on screen, and update the database so changes will stay if you reboot the flask stream. There is also an unswap() function that returns it to the way it was to begin with.
 
-To use the commands, right click anywhere on the page, click on inspect element, then click console at the top of the popup, then type the command swap(), or unswap() with parenthesis and hit enter.
+To use the commands, right click anywhere on the page, click on inspect element, then click console at the top of the popup, then type the command
+```
+swap()
+```
+or 
+```
+unswap()
+```
 
 ## Implementation
 
