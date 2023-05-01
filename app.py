@@ -2,7 +2,7 @@
 # BSM Robotics
 # Thomas Medina
 
-from pysondb import db
+import pysondb as db
 from flask import Flask, render_template, Response
 import cv2
 #imports functions from auto.py
