@@ -4,12 +4,13 @@
 
 Built for the ___ robot for Robocup 2023 in Bordeaux, France.
 
-Built to run on a Raspberry Pi but can also be used on other devices.
+Built to run on a Raspberry Pi with full raspbian, but can also be used on other devices.
 Runs 4 Cameras simultaneously using opencv, and streams them locally to a flask page.
 
 ## Cloning Repository
 
 ```
+cd Desktop
 git clone https://github.com/tmedina23/Robocup23-Cams.git
 ```
 
@@ -38,7 +39,16 @@ sudo apt-get install v4l-utils
 Note: opencv takes hours to build (no seriously), so make sure you have enough time for it to complete.
 
 ## Running onboot.py when the pi boots
-in progress...
+Start by editing the bashrc file
+```
+nano ~/.bashrc
+```
+Scroll to the very bottom and add the following lines:
+```
+echo "Starting onboot.py"
+cd ~/Desktop/Robocup23-Cams
+sudo python /home/pi/Desktop/Robocup23-Cams/onboot.py
+```
 
 ## Starting the stream
 
