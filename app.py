@@ -112,4 +112,4 @@ def video_feed3():
 
 #run flask app
 if __name__ == '__main__':
-    app.run(host='192.168.20.7', port=80)
+    app.run(host='192.168.20.160', port=80)
