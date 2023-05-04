@@ -44,6 +44,7 @@ def set_arrays():
 #Updates the database using database ids and arrays
 def updateDB():
     dupe = False
+    print(indices)
     for l in range(len(cams)):
         #if claw cam
         if (cams[l] == "HD USB Camera: HD USB Camera"):
