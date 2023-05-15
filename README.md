@@ -48,6 +48,7 @@ Scroll to the very bottom and add the following lines:
 echo "Starting onboot.py"
 cd ~/Desktop/Robocup23-Cams
 sudo python /home/pi/Desktop/Robocup23-Cams/onboot.py
+sudo python app.py
 ```
 
 ## Starting the stream
