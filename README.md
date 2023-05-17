@@ -2,7 +2,7 @@
 ## BSM Robotics
 ### Thomas Medina '23
 
-Built for the ___ robot for Robocup 2023 in Bordeaux, France.
+Built for the BSM Robotics robot for Robocup 2023 in Bordeaux, France.
 
 Built to run on a Raspberry Pi with full raspbian, but can also be used on other devices.
 Runs 4 Cameras simultaneously using opencv, and streams them locally to a flask page.
