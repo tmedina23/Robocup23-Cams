@@ -52,7 +52,7 @@ sudo python app.py
 ```
 
 ## Starting the stream
-If you have succesfully completed the previous step, then the pi will automatically cd into the correct directory and automatically assign the correct indexes. Then to start the camera stream all you will need is to enter the following command:
+If you have succesfully completed the previous step, then the pi will automatically cd into the correct directory and automatically assign the correct indexes. The previous step also starts the stream, but if the stream ever gets turned off, or you have to restart it, all you will need is to enter the following command:
 ```
 sudo python app.py
 ```
