@@ -37,7 +37,7 @@ claw_cam = auto.getindexdb(claw_id, False)
 front_left = auto.getindexdb(front_left_id, False)
 front_right = auto.getindexdb(front_right_id, False)
 back = auto.getindexdb(back_id, False)
-ip = auto.getindexdb(ip_id, False)
+ip = auto.getindexdb(ip_id, True)
 
 #get frame from each camera, designate if camera is claw or not
 def get_frame(cam_num, claw):
