@@ -10,6 +10,7 @@ from pysondb import db
 #Runs the command and saves the output
 output = str(subprocess.check_output(['v4l2-ctl', '--list-devices']))
 output_ls = str(subprocess.check_output(['lsusb']))
+output_ip = str(subprocess.check_output(['ifconfig']))
 #System names for each camera device
 searching = {"USB 2.0 Camera: HD USB Camera", "HD USB Camera: HD USB Camera", "HD USB Camera: USB Camera"}
 #names of each camera get saved here
@@ -88,7 +89,10 @@ def checkUpdate():
         print("Database Updated: New highest dev_number")
     else:
         camdb.updateById(209847509711096578,{"index":"True"})
-    
+
+def ip():
+    help = output_ip.find('inet 192.168')
+    print(output_ip[help:help+14])
 
 #runs everthing at once
 def run_auto():
