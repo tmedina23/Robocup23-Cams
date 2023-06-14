@@ -91,8 +91,9 @@ def checkUpdate():
         camdb.updateById(209847509711096578,{"index":"True"})
 
 def ip():
-    help = output_ip.find('inet 192')
-    print(output_ip[help+5:help+19])
+    index = output_ip.find('inet 192')
+    ip = output_ip[index+5:index+19]
+    camdb.updateById(252889469432313574,{"index":ip})
 
 #runs everthing at once
 def run_auto():
