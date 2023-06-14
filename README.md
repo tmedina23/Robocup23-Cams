@@ -2,7 +2,7 @@
 ## BSM Robotics
 ### Thomas Medina '23
 
-Built for the ___ robot for Robocup 2023 in Bordeaux, France.
+Built for the BSM Robotics robot for Robocup 2023 in Bordeaux, France.
 
 Built to run on a Raspberry Pi with full raspbian, but can also be used on other devices.
 Runs 4 Cameras simultaneously using opencv, and streams them locally to a flask page.
@@ -19,6 +19,11 @@ Start by updating apt-get:
 ```
 sudo apt-get update
 ```
+Install these:
+```
+pip install Flask pysondb numpy
+sudo apt-get install v4l-utils
+```
 Install dependecies for opencv:
 ```
 sudo apt-get install build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libhdf5-dev libhdf5-serial-dev libhdf5-103 python3-pyqt5 python3-dev -y
@@ -31,11 +36,7 @@ If that install fails, try:
 ```
 sudo apt-get install python-opencv
 ```
-Install the remaining dependencies:
-```
-pip install Flask pysondb numpy
-sudo apt-get install v4l-utils
-```
+
 Note: opencv takes hours to build (no seriously), so make sure you have enough time for it to complete.
 
 ## Running onboot.py when the pi boots
@@ -48,10 +49,11 @@ Scroll to the very bottom and add the following lines:
 echo "Starting onboot.py"
 cd ~/Desktop/Robocup23-Cams
 sudo python /home/pi/Desktop/Robocup23-Cams/onboot.py
+sudo python app.py
 ```
 
 ## Starting the stream
-
+If you have succesfully completed the previous step, then the pi will automatically cd into the correct directory and automatically assign the correct indexes. The previous step also starts the stream, but if the stream ever gets turned off, or you have to restart it, all you will need is to enter the following command:
 ```
 sudo python app.py
 ```
