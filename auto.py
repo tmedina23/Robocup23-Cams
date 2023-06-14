@@ -70,6 +70,7 @@ def getindexdb(id, ret_string):
         #False
         index = index1.replace("'","").strip()
     else:
+        print(index1)
         index = int(index1.replace("'","").strip())
     return index     
 
