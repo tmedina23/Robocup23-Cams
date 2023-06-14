@@ -16,6 +16,7 @@ claw_id = 277044989003970700
 front_left_id = 860846966079555970
 front_right_id = 870675630757077322
 back_id = 198339096107932300
+ip_id = 252889469432313574
 
 #use the following command in your terminal to find device numbers
 #v4l2-ctl --list-devices
@@ -36,6 +37,7 @@ claw_cam = auto.getindexdb(claw_id, False)
 front_left = auto.getindexdb(front_left_id, False)
 front_right = auto.getindexdb(front_right_id, False)
 back = auto.getindexdb(back_id, False)
+ip = auto.getindexdb(ip_id, False)
 
 #get frame from each camera, designate if camera is claw or not
 def get_frame(cam_num, claw):
@@ -112,4 +114,4 @@ def video_feed3():
 
 #run flask app
 if __name__ == '__main__':
-    app.run(host='192.168.20.125', port=80)
+    app.run(host=ip, port=80)
