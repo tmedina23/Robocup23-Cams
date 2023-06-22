@@ -114,7 +114,4 @@ def video_feed3():
 
 #run flask app
 if __name__ == '__main__':
-    try:
-        app.run(host=ip, port=80)
-    except Exception as e:
-        print(f'caught {type(e)}: e')
+    app.run(host=ip, port=80)
