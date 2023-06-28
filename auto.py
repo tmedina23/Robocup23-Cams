@@ -112,6 +112,7 @@ def checkUpdate():
         print("Database Updated: New highest dev_number")
     else:
         #sets the final value to true
+        print("No database changes made")
         camdb.updateById(209847509711096578,{"index":"True"})
 
 def ip():
